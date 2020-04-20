@@ -69,10 +69,22 @@ LinkedList.prototype.deleteFirstNode = function () {
   return this.head;
 };
 
+LinkedList.prototype.deleteLastNode = function () {
+  let previous = this.head;
+  let tail = this.head.next;
+  while (tail.next) {
+    previous = tail;
+    tail = tail.next;
+  }
+  previous.next = null;
+  return this.head;
+};
+
 const list = new LinkedList();
 list.insertAtBeginning(10);
 list.insertAtEnd(20);
 list.insertAtEnd(50);
 list.insertAtPosition(30, 1);
 list.deleteFirstNode();
+list.deleteLastNode();
 list.printList();
