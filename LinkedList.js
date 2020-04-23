@@ -80,11 +80,34 @@ LinkedList.prototype.deleteLastNode = function () {
   return this.head;
 };
 
+LinkedList.prototype.deleteAtPosition = function (data, index) {
+  if (head.next) {
+    let current = head.next;
+    let prevNode = head;
+    if (position === 0) {
+      head = head.next;
+    } else {
+      let i = 1;
+      while (prevNode) {
+        if (i === position) {
+          prevNode.next = current.next;
+          break;
+        }
+        i++;
+        prevNode = current;
+        current = current.next;
+      }
+    }
+    return head;
+  }
+  return null;
+};
+
 const list = new LinkedList();
 list.insertAtBeginning(10);
 list.insertAtEnd(20);
 list.insertAtEnd(50);
 list.insertAtPosition(30, 1);
 list.deleteFirstNode();
-list.deleteLastNode();
+list.deleteAtPosition(2);
 list.printList();
